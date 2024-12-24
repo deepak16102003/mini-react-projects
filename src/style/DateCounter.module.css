@@ -1,0 +1,29 @@
+.container {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: rgba(128, 128, 128, 0.126);
+    border: 2px solid grey;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    width: 30rem;
+}
+
+.buttonBox,
+.rangeBox {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.txt {
+    text-align: center;
+}
+
+.btn,
+.input {
+    padding: 0.1rem 0.4rem;
+    cursor: pointer;
+    /* background-color: red; */
+}

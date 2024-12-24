@@ -1,18 +1,26 @@
 import Card from "./components/Card";
-import "../index.css";
+import TextExpander from "./components/TextExpander";
+import DateCounter from "./components/DateCounter";
+import ImageSlider from "./components/ImageSlider";
+import "./index.css";
 
 const appStyle = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    height: "100vh",
+    //height: "100vh",
+    flexDirection: "column",
+    gap: "4rem",
+    padding: "4rem 0",
+    //height: "100vh",
 };
 function App() {
     return (
-        <div style={handleClose}>
-            <div style={appStyle}>
-                <Card />
-            </div>
+        <div style={appStyle}>
+            <Card />
+            <TextExpander />
+            <DateCounter />
+            <ImageSlider />
         </div>
     );
 }

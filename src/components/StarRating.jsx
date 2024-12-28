@@ -1,12 +1,16 @@
 import { useState } from "react";
+import styles from "../style/StarRating.module.css";
 
 const totalRating = 10;
-const color = "#e03131";
 
-function StarRating() {
+function StarRating(props) {
+    const { color, defaultRating, size: totalRating } = props;
+
+    const [rating, setRating] = useState(defaultRating);
     const [tempRating, setTempRating] = useState(0);
+    const hovering = tempRating !== 0;
 
-    console.log(tempRating);
+    // console.log(tempRating);-
 
     function handleMouseEnter(index) {
         setTempRating(index + 1);
@@ -16,40 +20,63 @@ function StarRating() {
         setTempRating(0);
     }
 
+    function handleSetRating(rating) {
+        setRating(rating);
+    }
+
+    function calcFill(rating, tempRating, index) {
+        if (hovering) {
+            if (index + 1 > tempRating) return false;
+            else return true;
+        }
+
+        if (!hovering) {
+            if (index + 1 > rating) return false;
+            else return true;
+        }
+    }
+
     return (
-        <div>
-            {new Array(totalRating).fill(0).map(function (_, index) {
-                return (
-                    <Star
-                        color={color}
-                        handleMouseEnter={handleMouseEnter}
-                        handleMouseOut={handleMouseOut}
-                        index={index}
-                        fill={index + 1 > tempRating ? false : true}
-                        key={index}
-                    />
-                );
-            })}
+        <div className={styles.ratingBox}>
+            <div>
+                {new Array(totalRating).fill(0).map(function (_, index) {
+                    return (
+                        <Star
+                            color={color}
+                            handleMouseEnter={handleMouseEnter}
+                            handleMouseOut={handleMouseOut}
+                            handleSetRating={handleSetRating}
+                            index={index}
+                            fill={calcFill(rating, tempRating, index)}
+                            key={index}
+                        />
+                    );
+                })}
+            </div>
+            <span>{hovering ? tempRating : rating}</span>
         </div>
     );
 }
 
 function Star(prop) {
-    const { color, handleMouseEnter, handleMouseOut, index, fill } = prop;
+    const {
+        color,
+        handleMouseEnter,
+        handleMouseOut,
+        handleSetRating,
+        index,
+        fill,
+    } = prop;
     return (
         <span
-            style={{
-                display: "inline-block",
-                backgroundColor: "grey",
-                height: "2rem",
-                width: "2rem",
-            }}
+            className={styles.starBox}
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={handleMouseOut}
+            onClick={() => handleSetRating(index + 1)}
         >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
-                fill="none"
+                fill={fill ? color : "none"}
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke={color}

@@ -1,0 +1,46 @@
+.container {
+    width: 45rem;
+    border-radius: 0.5rem;
+    overflow: none;
+}
+
+.container .row:first-child > h3 {
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.container .row:last-child > p {
+    border-radius: 0 0 0.5rem 0.5rem;
+    border-bottom: 1.5px solid grey;
+}
+
+.title {
+    padding: 1rem;
+    border: 1.5px solid grey;
+    font-weight: normal;
+    font-size: 1rem;
+}
+
+.details {
+    padding: 1rem;
+    border-left: 1.5px solid grey;
+    border-right: 1.5px solid grey;
+}
+
+.row h3 {
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.row h3:hover {
+    background-color: rgba(128, 128, 128, 0.25);
+}
+
+.row h3:active {
+    background-color: rgba(128, 128, 128, 0.35);
+}
+
+.row h3 > span {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

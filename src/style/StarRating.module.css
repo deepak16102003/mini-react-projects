@@ -1,0 +1,14 @@
+.starBox {
+    display: inline-block;
+    height: 2rem;
+    width: 2rem;
+    cursor: pointer;
+}
+.ratingBox {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.ratingBox > span {
+    font-size: 1.5rem;
+}
